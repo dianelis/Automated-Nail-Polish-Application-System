@@ -38,6 +38,7 @@ The Raspberry Pi captures an image, segments the nail, converts the nail mask in
 | `path_planning.py` | Cleans masks and creates raster stroke paths |
 | `kinematics.py` | First-pass inverse kinematics for base, shoulder, elbow, and wrist |
 | `control.py` | PCA9685/ServoKit robot control with dry-run mode |
+| `servo_test.py` | Simple Raspberry Pi bring-up script for individual servo and pose testing |
 | `sensors.py` | MPR121 capacitive sensor wrapper for future Z calibration |
 | `config.py` | Servo channels, arm geometry, workspace calibration, and paint settings |
 | `train_unet.py` | Minimal model export skeleton for saving a PyTorch U-Net state dict |
@@ -47,6 +48,9 @@ The Raspberry Pi captures an image, segments the nail, converts the nail mask in
 On the Raspberry Pi:
 
 ```bash
+sudo raspi-config
+# Interface Options -> I2C -> Enable
+
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -73,6 +77,55 @@ python main.py --live
 ```
 
 Keep the arm powered off or lifted away from a hand until the printed dry-run angles look reasonable.
+
+## Servo Bring-Up On Raspberry Pi
+
+First, confirm the Pi can see the PCA9685:
+
+```bash
+sudo apt install -y i2c-tools
+i2cdetect -y 1
+```
+
+You should usually see the servo driver at `0x40`.
+
+List the configured servo names:
+
+```bash
+python servo_test.py --list
+```
+
+Move one servo in dry-run mode first:
+
+```bash
+python servo_test.py --servo base --angle 110
+```
+
+Then move the real servo:
+
+```bash
+python servo_test.py --servo base --angle 110 --live
+```
+
+Sweep one servo gently:
+
+```bash
+python servo_test.py --servo shoulder --sweep 70 110 --live
+```
+
+Move all servos to their home angles:
+
+```bash
+python servo_test.py --home --live
+```
+
+Move the arm to a simple test pose using inverse kinematics:
+
+```bash
+python servo_test.py --pose 120 0 80 --tool-angle -90 --live
+```
+
+For first hardware tests, detach the syringe load, keep the motion range small, and test one servo at a time.
 
 ## Vision Model
 
