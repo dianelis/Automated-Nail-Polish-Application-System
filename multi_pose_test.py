@@ -23,7 +23,7 @@ DEFAULT_POSES = [
     ("x30-y0-z115", Pose(x_mm=30.0, y_mm=0.0, z_mm=115.0, tool_angle_deg=10.0)),
     ("x40-y35-z110", Pose(x_mm=40.0, y_mm=35.0, z_mm=110.0, tool_angle_deg=10.0)),
     ("x55-y55-z105", Pose(x_mm=20.0, y_mm=55.0, z_mm=105.0, tool_angle_deg=10.0)),
-    ("retract-up", Pose(x_mm=0.0, y_mm=0.0, z_mm=90.0, tool_angle_deg=90.0)),
+    ("retract-up", Pose(x_mm=0.0, y_mm=0.0, z_mm=250.0, tool_angle_deg=180.0)),
 ]
 
 
