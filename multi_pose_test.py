@@ -53,7 +53,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--delay",
         type=float,
-        default=1.0,
+        default=0.2,
         help="Extra delay in seconds to wait after each pose.",
     )
     parser.add_argument(
