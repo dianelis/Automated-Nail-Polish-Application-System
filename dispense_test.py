@@ -46,8 +46,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--offset",
         type=float,
-        default=5.0,
-        help="Tiny angle offset to add to the feed angle (default: 5.0 degrees).",
+        default=30.0,
+        help="Tiny angle offset to add to the feed angle (default: 30.0 degrees).",
     )
     parser.add_argument(
         "--live",
