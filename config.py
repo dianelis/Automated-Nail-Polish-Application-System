@@ -68,7 +68,7 @@ class PaintConfig:
     raster_spacing_px: int = 8
     min_component_area_px: int = 500
     move_delay_s: float = 0.03
-    paint_feed_angle: float = 170.0
+    paint_feed_angle: float = 140.0
     paint_idle_angle: float = 90.0
     dispense_pulse_s: float = 0.04
     max_path_points: int = 250
