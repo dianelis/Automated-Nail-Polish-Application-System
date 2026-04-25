@@ -18,12 +18,12 @@ from kinematics import KinematicsError, Pose, inverse_kinematics
 
 
 DEFAULT_POSES = [
-    ("x10-z115", Pose(x_mm=10.0, y_mm=0.0, z_mm=115.0, tool_angle_deg=10.0)),
-    ("x20-z115", Pose(x_mm=20.0, y_mm=0.0, z_mm=115.0, tool_angle_deg=10.0)),
-    ("x30-z115", Pose(x_mm=30.0, y_mm=0.0, z_mm=115.0, tool_angle_deg=10.0)),
-    ("x40-z110", Pose(x_mm=40.0, y_mm=0.0, z_mm=110.0, tool_angle_deg=10.0)),
-    ("x55-z105", Pose(x_mm=55.0, y_mm=0.0, z_mm=105.0, tool_angle_deg=10.0)),
-    ("x70-z100", Pose(x_mm=70.0, y_mm=0.0, z_mm=100.0, tool_angle_deg=10.0)),
+    ("x10-y0-z115", Pose(x_mm=10.0, y_mm=0.0, z_mm=115.0, tool_angle_deg=10.0)),
+    ("x30-y20-z115", Pose(x_mm=30.0, y_mm=20.0, z_mm=115.0, tool_angle_deg=10.0)),
+    ("x30-y0-z115", Pose(x_mm=30.0, y_mm=0.0, z_mm=115.0, tool_angle_deg=10.0)),
+    ("x40-y35-z110", Pose(x_mm=40.0, y_mm=35.0, z_mm=110.0, tool_angle_deg=10.0)),
+    ("x55-y55-z105", Pose(x_mm=55.0, y_mm=55.0, z_mm=105.0, tool_angle_deg=10.0)),
+    ("x70-y80-z100", Pose(x_mm=70.0, y_mm=80.0, z_mm=100.0, tool_angle_deg=10.0)),
 ]
 
 
