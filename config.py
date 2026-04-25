@@ -86,7 +86,7 @@ class HardwareConfig:
             "shoulder": ServoCalibration(channel=2, min_angle=15, max_angle=165, home_angle=90),
             "elbow": ServoCalibration(channel=4, min_angle=15, max_angle=165, home_angle=90, invert=True),
             "wrist": ServoCalibration(channel=5, min_angle=20, max_angle=160, home_angle=90),
-            "dispenser": ServoCalibration(channel=6, min_angle=70, max_angle=130, home_angle=90),
+            "dispenser": ServoCalibration(channel=6, min_angle=70, max_angle=130, home_angle=90, invert=True),
         }
     )
 
