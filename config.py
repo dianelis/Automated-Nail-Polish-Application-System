@@ -68,7 +68,7 @@ class PaintConfig:
     raster_spacing_px: int = 8
     min_component_area_px: int = 500
     move_delay_s: float = 0.03
-    paint_feed_angle: float = 115.0
+    paint_feed_angle: float = 180.0
     paint_idle_angle: float = 90.0
     dispense_pulse_s: float = 0.04
     max_path_points: int = 250
@@ -86,7 +86,7 @@ class HardwareConfig:
             "shoulder": ServoCalibration(channel=2, min_angle=15, max_angle=165, home_angle=90),
             "elbow": ServoCalibration(channel=4, min_angle=15, max_angle=165, home_angle=90, invert=True),
             "wrist": ServoCalibration(channel=5, min_angle=20, max_angle=160, home_angle=90),
-            "dispenser": ServoCalibration(channel=6, min_angle=70, max_angle=130, home_angle=90, invert=True),
+            "dispenser": ServoCalibration(channel=6, min_angle=70, max_angle=180, home_angle=90, invert=True),
         }
     )
 
