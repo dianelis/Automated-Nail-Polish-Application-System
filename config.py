@@ -33,7 +33,7 @@ class ServoCalibration:
 
 @dataclass(frozen=True)
 class RobotGeometry:
-    base_height_mm: float = 36.0
+    base_height_mm: float = 89.0
     link1_mm: float = 110.0
     link2_mm: float = 110.0
     tool_offset_mm: float = 100.0
