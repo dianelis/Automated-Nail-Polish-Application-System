@@ -37,5 +37,5 @@ if __name__ == "__main__":
     else:
         raise SystemExit(
             "Training loop is intentionally left for dataset-specific setup. "
-            "Start from the Kaggle notebook, then save model.state_dict() here."
+            "Start from the Colab notebook, then save model.state_dict() here."
         )

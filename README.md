@@ -42,8 +42,7 @@ The current implementation is intentionally safety-first. It defaults to dry-run
 │   └── export_unet.py             # Exports a Pi-loadable U-Net state_dict for integration testing
 │
 ├── notebooks/                     # GPU notebook workflows
-│   ├── train_nail_unet_colab.ipynb
-│   └── train_nail_unet_kaggle.ipynb
+│   └── train_nail_unet_colab.ipynb
 │
 ├── models/                        # Drop trained model weights here
 │   └── .gitkeep                   # Keeps directory tracked; .pt/.pth model files are ignored
@@ -277,10 +276,9 @@ The runtime code loads a PyTorch U-Net state dict from:
 models/nail_unet.pt
 ```
 
-The notebooks in [notebooks/](notebooks/) train and validate that model:
+The notebook in [notebooks/](notebooks/) trains and validates that model:
 
 - `train_nail_unet_colab.ipynb` is configured for Google Colab and Google Drive.
-- `train_nail_unet_kaggle.ipynb` is configured for Kaggle datasets.
 
 Both expect a split dataset:
 
@@ -393,7 +391,7 @@ Implemented:
 - pixel-to-workspace conversion
 - inverse kinematics
 - hardware bring-up scripts
-- Colab/Kaggle training notebooks
+- Colab training notebook
 
 Still needs physical-system calibration:
 

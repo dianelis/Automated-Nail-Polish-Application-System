@@ -1,6 +1,6 @@
 """Camera capture and nail segmentation.
 
-The UNet blocks mirror the Kaggle notebook structure so a trained state_dict can
+The UNet blocks mirror the Colab notebook structure so a trained state_dict can
 be loaded on the Raspberry Pi. If no model is available, HSV thresholding can be
 used for early mechanical testing with a high-contrast nail/background setup.
 """
