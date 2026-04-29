@@ -5,10 +5,10 @@ The current arm is modeled as:
 - Motor 2: shoulder pitch.
 - Motor 3: elbow pitch.
 - Motor 4: wrist/tool angle.
-- Motor 5: dispenser cam, handled by control.py.
+- Motor 5: dispenser cam, handled by nailbot.control.
 
 This model is intentionally simple and calibration-friendly. Measure the real
-link lengths and servo zero directions, then update config.py.
+link lengths and servo zero directions, then update nailbot.config.
 """
 
 from __future__ import annotations
@@ -60,7 +60,7 @@ def inverse_kinematics(
 
     The shoulder/elbow calculation solves a 2-link planar arm after removing
     the tool offset in the requested tool direction. Returned angles are logical
-    0-180 degree servo commands and still need per-servo calibration in control.py.
+    0-180 degree servo commands and still need per-servo calibration in nailbot.control.
     """
 
     base_deg = degrees(atan2(pose.y_mm, pose.x_mm)) + 90.0

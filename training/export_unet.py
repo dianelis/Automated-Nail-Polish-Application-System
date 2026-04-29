@@ -1,7 +1,7 @@
 """Minimal training/export skeleton for the nail U-Net.
 
-Use the Kaggle notebook for experiments, then keep this script as the repo
-version that saves a Raspberry-Pi-loadable state_dict at models/nail_unet.pt.
+Use the notebooks for experiments, then keep this script as the repo version
+that saves a Raspberry-Pi-loadable state_dict at models/nail_unet.pt.
 """
 
 from __future__ import annotations
