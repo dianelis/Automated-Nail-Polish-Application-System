@@ -4,9 +4,9 @@ This script uses the current inverse kinematics model to move the arm to a
 desired cartesian pose. It is intended for bench testing and calibration.
 
 Examples:
-    python pose_test.py --x 120 --y 0 --z 80 --tool-angle -90
-    python pose_test.py --x 120 --y 0 --z 80 --tool-angle -90 --live
-    python pose_test.py --interactive --live
+    python -m scripts.pose_test --x 120 --y 0 --z 80 --tool-angle -90
+    python -m scripts.pose_test --x 120 --y 0 --z 80 --tool-angle -90 --live
+    python -m scripts.pose_test --interactive --live
 """
 
 from __future__ import annotations
@@ -14,9 +14,9 @@ from __future__ import annotations
 import argparse
 from dataclasses import replace
 
-from config import CONFIG
-from control import RobotController
-from kinematics import KinematicsError, Pose, inverse_kinematics
+from nailbot.config import CONFIG
+from nailbot.control import RobotController
+from nailbot.kinematics import KinematicsError, Pose, inverse_kinematics
 
 
 def build_hardware(dry_run: bool):

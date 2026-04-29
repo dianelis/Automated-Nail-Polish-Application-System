@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from config import HardwareConfig
+from nailbot.config import HardwareConfig
 
 
 class CapacitiveSensor:

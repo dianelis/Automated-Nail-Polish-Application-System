@@ -10,7 +10,7 @@ from __future__ import annotations
 import time
 from contextlib import AbstractContextManager
 
-from config import HardwareConfig, PaintConfig, ServoCalibration
+from nailbot.config import HardwareConfig, PaintConfig, ServoCalibration
 
 
 class RobotController(AbstractContextManager):

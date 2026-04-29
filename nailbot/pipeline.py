@@ -1,20 +1,21 @@
-"""Run one nail-painting cycle from camera image to servo commands."""
+"""End-to-end nail painting pipeline."""
 
 from __future__ import annotations
 
-import argparse
 from pathlib import Path
 
 import cv2
 
-from config import CONFIG
-from control import RobotController
-from kinematics import KinematicsError, inverse_kinematics
-from path_planning import clean_mask, path_to_workspace, raster_path
-from vision import Camera, NailSegmenter
+from nailbot.config import CONFIG
+from nailbot.control import RobotController
+from nailbot.kinematics import KinematicsError, inverse_kinematics
+from nailbot.path_planning import clean_mask, path_to_workspace, raster_path
+from nailbot.vision import Camera, NailSegmenter
 
 
 def run_once(image_path: Path | None = None, dry_run: bool = True) -> None:
+    """Run one capture/segment/plan/control cycle."""
+
     config = CONFIG
     hardware = config.hardware
     if dry_run != hardware.dry_run:
@@ -68,15 +69,3 @@ def _load_or_capture_image(image_path: Path | None):
         return image
 
     return Camera(CONFIG.vision.camera_index).capture()
-
-
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Automated nail polish robot controller")
-    parser.add_argument("--image", type=Path, help="Use a saved image instead of the Pi camera.")
-    parser.add_argument("--live", action="store_true", help="Drive real servos instead of dry-run printing.")
-    return parser.parse_args()
-
-
-if __name__ == "__main__":
-    args = parse_args()
-    run_once(image_path=args.image, dry_run=not args.live)

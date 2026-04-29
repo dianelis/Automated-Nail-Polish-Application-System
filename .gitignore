@@ -4,6 +4,7 @@ __pycache__/
 venv/
 models/*.pt
 models/*.pth
+!models/.gitkeep
 *.jpg
 *.jpeg
 *.png

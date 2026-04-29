@@ -4,9 +4,9 @@ This is a presentation-friendly demo path that traces block letters with simple
 line segments. The script lifts between strokes and retracts upward at the end.
 
 Examples:
-    python write_hi.py
-    python write_hi.py --live
-    python write_hi.py --origin-x 20 --origin-y 10 --surface-z 100 --live
+    python -m scripts.write_hi
+    python -m scripts.write_hi --live
+    python -m scripts.write_hi --origin-x 20 --origin-y 10 --surface-z 100 --live
 """
 
 from __future__ import annotations
@@ -15,9 +15,9 @@ import argparse
 import time
 from dataclasses import replace
 
-from config import CONFIG
-from control import RobotController
-from kinematics import KinematicsError, Pose, inverse_kinematics
+from nailbot.config import CONFIG
+from nailbot.control import RobotController
+from nailbot.kinematics import KinematicsError, Pose, inverse_kinematics
 
 
 def build_hardware(dry_run: bool):

@@ -16,7 +16,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from math import acos, atan2, cos, degrees, hypot, radians, sin, sqrt
 
-from config import RobotGeometry
+from nailbot.config import RobotGeometry
 
 
 @dataclass(frozen=True)
@@ -72,9 +72,7 @@ def inverse_kinematics(
 
     link1 = geometry.link1_mm
     link2 = geometry.link2_mm
-    " computes the straight-line distance from shoulder to wrist"
     reach = hypot(wrist_r_mm, wrist_z_mm)
-    "Then checks if a 2-link arm can even reach that point:"
     if reach > link1 + link2 or reach < abs(link1 - link2):
         raise KinematicsError(
             f"Target {pose} is unreachable. Wrist reach is {reach:.1f} mm "

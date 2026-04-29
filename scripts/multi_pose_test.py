@@ -1,9 +1,9 @@
 """Run the arm through a sequence of test poses using inverse kinematics.
 
 Examples:
-    python multi_pose_test.py
-    python multi_pose_test.py --live
-    python multi_pose_test.py --delay 2.0 --live
+    python -m scripts.multi_pose_test
+    python -m scripts.multi_pose_test --live
+    python -m scripts.multi_pose_test --delay 2.0 --live
 """
 
 from __future__ import annotations
@@ -12,9 +12,9 @@ import argparse
 import time
 from dataclasses import replace
 
-from config import CONFIG
-from control import RobotController
-from kinematics import KinematicsError, Pose, inverse_kinematics
+from nailbot.config import CONFIG
+from nailbot.control import RobotController
+from nailbot.kinematics import KinematicsError, Pose, inverse_kinematics
 
 
 DEFAULT_POSES = [

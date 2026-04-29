@@ -5,7 +5,7 @@ It does not prompt for input and is meant to let the arm trace a continuous path
 from repeated per-servo motions.
 
 Example:
-    python servo_path_test.py --live
+    python -m scripts.servo_path_test --live
 """
 
 from __future__ import annotations
@@ -13,8 +13,8 @@ from __future__ import annotations
 import argparse
 from dataclasses import replace
 
-from config import CONFIG
-from control import RobotController
+from nailbot.config import CONFIG
+from nailbot.control import RobotController
 
 
 def build_live_hardware(dry_run: bool):

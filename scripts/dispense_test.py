@@ -5,8 +5,8 @@ holds briefly, then returns to idle. It's designed for testing small dispensing
 adjustments without full interactive control.
 
 Example:
-    python dispense_test.py --live
-    python dispense_test.py --live --offset 2.0
+    python -m scripts.dispense_test --live
+    python -m scripts.dispense_test --live --offset 2.0
 """
 
 from __future__ import annotations
@@ -15,8 +15,8 @@ import argparse
 import time
 from dataclasses import replace
 
-from config import CONFIG
-from control import RobotController
+from nailbot.config import CONFIG
+from nailbot.control import RobotController
 
 
 def build_live_hardware(dry_run: bool):

@@ -7,8 +7,8 @@ from dataclasses import dataclass
 import cv2
 import numpy as np
 
-from config import WorkspaceCalibration
-from kinematics import Pose
+from nailbot.config import WorkspaceCalibration
+from nailbot.kinematics import Pose
 
 
 @dataclass(frozen=True)

@@ -1,12 +1,12 @@
 """Simple bring-up script for PCA9685 servo testing on a Raspberry Pi.
 
 Examples:
-    python servo_test.py --list
-    python servo_test.py --servo base --angle 110 --live
-    python servo_test.py --servo shoulder --sweep 70 120 --live
-    python servo_test.py --angles 90 100 110 90 --live
-    python servo_test.py --pose 120 0 80 --tool-angle -90 --live
-    python servo_test.py --home --live
+    python -m scripts.servo_test --list
+    python -m scripts.servo_test --servo base --angle 110 --live
+    python -m scripts.servo_test --servo shoulder --sweep 70 120 --live
+    python -m scripts.servo_test --angles 90 100 110 90 --live
+    python -m scripts.servo_test --pose 120 0 80 --tool-angle -90 --live
+    python -m scripts.servo_test --home --live
 """
 
 from __future__ import annotations
@@ -14,9 +14,9 @@ from __future__ import annotations
 import argparse
 from dataclasses import replace
 
-from config import CONFIG
-from control import RobotController
-from kinematics import KinematicsError, Pose, inverse_kinematics
+from nailbot.config import CONFIG
+from nailbot.control import RobotController
+from nailbot.kinematics import KinematicsError, Pose, inverse_kinematics
 
 
 def build_live_hardware(dry_run: bool):

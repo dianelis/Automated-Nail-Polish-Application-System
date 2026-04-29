@@ -11,7 +11,7 @@ from pathlib import Path
 
 import torch
 
-from vision import UNet
+from nailbot.vision import UNet
 
 
 def export_empty_model(output_path: Path) -> None:
