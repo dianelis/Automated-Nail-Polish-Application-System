@@ -47,6 +47,12 @@ The current implementation is intentionally safety-first. It defaults to dry-run
 ├── models/                        # Drop trained model weights here
 │   └── .gitkeep                   # Keeps directory tracked; .pt/.pth model files are ignored
 │
+├── apps/
+│   └── web/                       # React + TypeScript supervisory dashboard
+│       ├── src/pages/             # Overview, sessions, performance, requirements, pipeline, hardware
+│       ├── src/data/              # Mock supervisory telemetry and dashboard fixtures
+│       └── src/lib/api.ts         # Typed API client for current mocks and future /api endpoints
+│
 ├── requirements.txt
 └── README.md
 ```
@@ -150,6 +156,25 @@ for pose in poses_mm:
 
 The command-line wrapper is [scripts/run_cycle.py](scripts/run_cycle.py).
 
+### 8. Supervisory Web Dashboard
+
+[apps/web](apps/web) contains a React + TypeScript dashboard for the supervisory
+and logging layer described in the design deck.
+
+The dashboard provides:
+
+- live robot-state overview for the SFC flow (`IDLE`, `CALIBRATE`, `GENERATE_PATH`, `APPLY_LAYER`, `EVALUATE_THICKNESS`, `DRY`, `COMPLETE`)
+- session logs with boundary error, thickness variation, cycle time, latency, IoU, operator, nail profile, model version, and outcome
+- performance charts for boundary accuracy, thickness consistency, cycle time, and repeatability
+- requirements-vs-actual tracking for the Phase 1C targets
+- model pipeline views for dataset coverage, U-Net version history, failed samples, and retraining readiness
+- hardware status views for servos, camera, end-effector, sensors, calibration, and event logs
+
+It currently runs from typed mock data in `apps/web/src/data` through the API
+surface in [apps/web/src/lib/api.ts](apps/web/src/lib/api.ts). The same client
+is ready to point at future `/api/*` backend routes when the robot controller is
+wrapped with an HTTP service.
+
 ## Install
 
 On the Raspberry Pi:
@@ -190,6 +215,33 @@ python -m scripts.run_cycle --live
 ```
 
 With no `--image`, the system captures from the configured camera index.
+
+## Running the Web Dashboard
+
+Run the frontend from the web app directory:
+
+```bash
+cd apps/web
+npm install
+npm run dev
+```
+
+The Vite dev server prints a local URL, usually:
+
+```text
+http://localhost:5173
+```
+
+Useful frontend scripts:
+
+```bash
+npm run typecheck
+npm run build
+npm run preview
+```
+
+See [apps/web/README.md](apps/web/README.md) for the dashboard page map,
+frontend stack, and notes on connecting a future FastAPI backend.
 
 ## Hardware Bring-Up
 
