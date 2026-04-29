@@ -292,11 +292,21 @@ NailSegmentationDatasetV2/
   test/masks/
 ```
 
-After training, export a plain state dict and copy it into the repo:
+After training, the notebook writes a deploy checkpoint to Google Drive:
+
+```text
+/content/drive/MyDrive/nail_unet_outputs/nail_unet.pt
+```
+
+Copy that file into the local repo as:
 
 ```text
 models/nail_unet.pt
 ```
+
+The deploy checkpoint includes the trained weights plus the tuned segmentation threshold and image size. `nailbot/vision.py` reads those values automatically when they are present.
+
+Do not commit trained model artifacts. Files such as `.pt`, `.pth`, `.keras`, and zipped models under `models/` are ignored because they are generated outputs rather than source code.
 
 For pipeline testing before a real model is trained, generate an untrained placeholder:
 

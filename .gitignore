@@ -1,9 +1,13 @@
 __pycache__/
 *.py[cod]
+.DS_Store
 .venv/
 venv/
 models/*.pt
 models/*.pth
+models/*.zip
+models/*.keras
+models/NailSegmentationDatasetV2/
 !models/.gitkeep
 *.jpg
 *.jpeg

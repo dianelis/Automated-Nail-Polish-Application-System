@@ -7,6 +7,7 @@ used for early mechanical testing with a high-contrast nail/background setup.
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import cv2
@@ -141,9 +142,29 @@ class NailSegmenter:
         self.device = self.device or ("cuda" if torch.cuda.is_available() else "cpu")
         self.model = UNet().to(self.device)
         checkpoint = torch.load(self.model_path, map_location=self.device)
-        state_dict = checkpoint.get("model_state_dict", checkpoint) if isinstance(checkpoint, dict) else checkpoint
+        if isinstance(checkpoint, dict):
+            state_dict = checkpoint.get("model_state_dict", checkpoint)
+            if "threshold" in checkpoint:
+                self.threshold = float(checkpoint["threshold"])
+            if "image_size" in checkpoint:
+                self.image_size = tuple(checkpoint["image_size"])
+        else:
+            state_dict = checkpoint
+            self._load_sidecar_metadata()
         self.model.load_state_dict(state_dict)
         self.model.eval()
+
+    def _load_sidecar_metadata(self) -> None:
+        metadata_path = self.model_path.with_name(f"{self.model_path.stem}_metadata.json")
+        if not metadata_path.exists():
+            return
+
+        with metadata_path.open() as metadata_file:
+            metadata = json.load(metadata_file)
+        if "threshold" in metadata:
+            self.threshold = float(metadata["threshold"])
+        if "image_size" in metadata:
+            self.image_size = tuple(metadata["image_size"])
 
     def _predict_unet(self, image_bgr: np.ndarray) -> np.ndarray:
         assert torch is not None
