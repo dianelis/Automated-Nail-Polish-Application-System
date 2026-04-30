@@ -328,6 +328,12 @@ The runtime code loads a PyTorch U-Net state dict from:
 models/nail_unet.pt
 ```
 
+This repository includes the current trained baseline at that path. It was
+selected from the Colab training outputs as the best validation checkpoint and
+renamed to the runtime path expected by [nailbot/vision.py](nailbot/vision.py).
+The duplicate Colab export folder and zip are ignored to avoid committing the
+same weights multiple times.
+
 The notebook in [notebooks/](notebooks/) trains and validates that model:
 
 - `train_nail_unet_colab.ipynb` is configured for Google Colab.
@@ -362,9 +368,14 @@ Download that file from the Colab file browser and place it into the local repo 
 models/nail_unet.pt
 ```
 
-The deploy checkpoint includes the trained weights plus the tuned segmentation threshold and image size. `nailbot/vision.py` reads those values automatically when they are present.
+The deploy checkpoint includes the trained weights plus segmentation metadata
+such as threshold and image size. `nailbot/vision.py` reads those values
+automatically when they are present.
 
-Do not commit trained model artifacts. Files such as `.pt`, `.pth`, `.keras`, and zipped models under `models/` are ignored because they are generated outputs rather than source code.
+Do not commit duplicate trained artifacts. The repository intentionally allows
+`models/nail_unet.pt` as the single runtime baseline, while other `.pt`, `.pth`,
+`.keras`, zip files, and raw Colab export folders remain ignored because they
+are generated outputs rather than source code.
 
 For pipeline testing before a real model is trained, generate an untrained placeholder:
 
