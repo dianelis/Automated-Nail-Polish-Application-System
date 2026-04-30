@@ -44,8 +44,8 @@ The current implementation is intentionally safety-first. It defaults to dry-run
 ├── notebooks/                     # GPU notebook workflows
 │   └── train_nail_unet_colab.ipynb
 │
-├── models/                        # Drop trained model weights here
-│   └── .gitkeep                   # Keeps directory tracked; .pt/.pth model files are ignored
+├── models/                        # Runtime model artifact
+│   └── nail_unet.pt               # Trained baseline loaded by nailbot/vision.py
 │
 ├── apps/
 │   └── web/                       # React + TypeScript supervisory dashboard

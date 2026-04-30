@@ -9,7 +9,6 @@ models/*.zip
 models/*.keras
 !models/nail_unet.pt
 models/NailSegmentationDatasetV2/
-!models/.gitkeep
 *.jpg
 *.jpeg
 *.png
@@ -19,3 +18,4 @@ NailSegmentationDatasetV2/
 NailSegmentationDatasetV2.zip
 nail_unet_outputs/
 nail_unet_outputs*.zip
+*.tsbuildinfo
